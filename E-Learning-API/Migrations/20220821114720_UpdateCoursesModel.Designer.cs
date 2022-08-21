@@ -3,6 +3,7 @@ using System;
 using E_Learning_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace E_Learning_API.Migrations
 {
     [DbContext(typeof(ElearningDataContext))]
-    partial class ElearningDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220821114720_UpdateCoursesModel")]
+    partial class UpdateCoursesModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

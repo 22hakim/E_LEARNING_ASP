@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "a7eHbtGpizwq2WR/z4SKk7irlAUxl+jclXJlnBPemLABGFde8+sV4LoIGy1pSXuyIwGjHO4AEmn9rVzDCQx9aQ==",
+  "dgSpecHash": "IHOS+PE6JnGhTnCfDcUWlHKPYC4P0Ne3TVGR+bvoQx4c1zTZzc1MP1s1QJghTS01G3yB42gdC2IRwExPAR5cyw==",
   "success": true,
   "projectFilePath": "/Users/hakim/Projects/E-Learning-API/E-Learning-API/E-Learning-API.csproj",
   "expectedPackageFiles": [
+    "/Users/hakim/.nuget/packages/bogus/34.0.2/bogus.34.0.2.nupkg.sha512",
     "/Users/hakim/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/hakim/.nuget/packages/microsoft.entityframeworkcore/6.0.8/microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
     "/Users/hakim/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.8/microsoft.entityframeworkcore.abstractions.6.0.8.nupkg.sha512",
