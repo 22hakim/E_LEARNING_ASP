@@ -25,6 +25,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Models\Enum\" />
     <None Remove="Faker\" />
+    <None Remove="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -32,5 +33,6 @@
     <Folder Include="Data\" />
     <Folder Include="Models\Enum\" />
     <Folder Include="Faker\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>
