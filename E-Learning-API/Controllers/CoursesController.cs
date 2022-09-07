@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using E_Learning_API.Repositories;
+﻿using Microsoft.AspNetCore.Mvc;
 using E_Learning_API.Interfaces;
 using E_Learning_API.Models;
 

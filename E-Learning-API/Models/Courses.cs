@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using E_Learning_API.Models.Enum;
 
 namespace E_Learning_API.Models;
@@ -8,7 +7,6 @@ public class Courses
 {
     [Key]
     public int Id { get; set; }
-
     
     public string? Title { get; set; }
 
@@ -18,6 +16,6 @@ public class Courses
 
     public string? Content { get; set; }
 
-    public Published published { get; set; }
+    public Published Published { get; set; }
 
 }
