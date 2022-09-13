@@ -1,4 +1,5 @@
 ﻿using E_Learning_API.Data;
+using E_Learning_API.Faker;
 using E_Learning_API.Interfaces;
 using E_Learning_API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
-
+builder.Services.AddScoped<ICourseRepository, CoursesRepository>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IAssignementRepository, AssignementRepository>();
 builder.Services.AddDbContext<ElearningDataContext>(s => s.UseNpgsql(builder.Configuration.GetConnectionString("ElearningDB")));
 
 
@@ -17,8 +19,13 @@ builder.Services.AddDbContext<ElearningDataContext>(s => s.UseNpgsql(builder.Con
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
+//if (args.Length == 1 && args[0].ToLower() == "seed")
+//{
+//    await FakeCourses.SetFakeCourses(app, 5);
+//}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
