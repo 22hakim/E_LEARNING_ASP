@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<ICourseRepository, CoursesRepository>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IAssignementRepository, AssignementRepository>();
 builder.Services.AddDbContext<ElearningDataContext>(s => s.UseNpgsql(builder.Configuration.GetConnectionString("ElearningDB")));
 
 

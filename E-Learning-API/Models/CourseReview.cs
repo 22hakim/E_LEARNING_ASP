@@ -1,10 +1,13 @@
 ﻿namespace E_Learning_API.Models;
 
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using E_Learning_API.Models.Enum;
 
 public class CourseReview
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public RateCourse Rate { get; set; }

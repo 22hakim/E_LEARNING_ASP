@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using E_Learning_API.Interfaces;
 using E_Learning_API.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace E_Learning_API.Controllers;
@@ -18,9 +19,12 @@ public class CoursesController : Controller
 
     // GET: api/values
     [HttpGet]
-    public async Task<IEnumerable<Course>> Get()
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<Course>>> Get()
     {
-        return await _cr.GetAll();
+        var courses = await _cr.GetAll();
+        return (courses is null) ? NotFound(): Ok(courses);
     }
 
     // GET api/values/5
@@ -29,8 +33,8 @@ public class CoursesController : Controller
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Course))]
     public async Task<IActionResult> Get(int id)
     {
-        Course? c = await _cr.GetByIdAsyncUntracked(id);
-        return c == null ? NotFound() : Ok(c);
+        var c = await _cr.GetByIdAsyncUntracked(id);
+        return c is null ? NotFound() : Ok(c);
     }
 
     // POST api/values
@@ -46,11 +50,11 @@ public class CoursesController : Controller
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Course))]
-    public IActionResult Edit(int id, Course c)
+    public async Task<IActionResult> Edit(int id, Course c)
     {
         if (id != c.Id) return BadRequest();
 
-        _cr.Update(c);
+        await _cr.Update(c);
         return NoContent();
     }
 
@@ -61,7 +65,7 @@ public class CoursesController : Controller
     public async Task<IActionResult> Delete(int id, Course c)
     {
         Course? courses = await _cr.GetByIdAsyncUntracked(id);
-        if (courses == null) return NotFound();
+        if (courses is null) return NotFound();
 
         await _cr.Delete(c);
         return NoContent();
