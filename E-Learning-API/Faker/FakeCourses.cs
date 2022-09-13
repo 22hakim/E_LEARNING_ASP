@@ -17,7 +17,7 @@ public class FakeCourses
 
         if (context is not null)
         {
-            var coursFaker = new Faker<Courses>()
+            var coursFaker = new Faker<Course>()
                 .RuleFor(x => x.Title, x => x.Lorem.Sentence(new Random().Next(1, 5)))
                 .RuleFor(x => x.Content, x => x.Lorem.Lines(new Random().Next(1, 5)))
                 .RuleFor(d => d.CreatedAt, x => x.Date.Recent(4))

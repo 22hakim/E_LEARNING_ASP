@@ -12,7 +12,7 @@
     "E_Learning_API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:35806",
+      "applicationUrl": "http://localhost:12211",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

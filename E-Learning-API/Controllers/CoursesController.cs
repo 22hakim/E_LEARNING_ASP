@@ -9,16 +9,16 @@ namespace E_Learning_API.Controllers;
 [ApiController]
 public class CoursesController : Controller
 {
-    private readonly ICoursesRepository _cr;
+    private readonly ICourseRepository _cr;
 
-    public CoursesController(ICoursesRepository coursesRepository)
+    public CoursesController(ICourseRepository coursesRepository)
     {
         _cr = coursesRepository;
     }
 
     // GET: api/values
     [HttpGet]
-    public async Task<IEnumerable<Courses>> Get()
+    public async Task<IEnumerable<Course>> Get()
     {
         return await _cr.GetAll();
     }
@@ -26,31 +26,31 @@ public class CoursesController : Controller
     // GET api/values/5
     [HttpGet("{id}"),ActionName("GetValue")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Courses))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Course))]
     public async Task<IActionResult> Get(int id)
     {
-        Courses? courses = await _cr.GetByIdAsyncUntracked(id);
-        return courses == null ? NotFound() : Ok(courses);
+        Course? c = await _cr.GetByIdAsyncUntracked(id);
+        return c == null ? NotFound() : Ok(c);
     }
 
     // POST api/values
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> Create(Courses course)
+    public async Task<IActionResult> Create(Course c)
     {
-        await _cr.Add(course);
-        return CreatedAtAction(nameof(Get), new { id = course.Id }, course);
+        await _cr.Add(c);
+        return CreatedAtAction(nameof(Get), new { id = c.Id }, c);
     }
 
     // PUT api/values/5
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Courses))]
-    public IActionResult Edit(int id, Courses course)
+    [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Course))]
+    public IActionResult Edit(int id, Course c)
     {
-        if (id != course.Id) return BadRequest();
+        if (id != c.Id) return BadRequest();
 
-        _cr.Update(course);
+        _cr.Update(c);
         return NoContent();
     }
 
@@ -58,12 +58,12 @@ public class CoursesController : Controller
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> Delete(int id, Courses Course)
+    public async Task<IActionResult> Delete(int id, Course c)
     {
-        Courses? courses = await _cr.GetByIdAsyncUntracked(id);
+        Course? courses = await _cr.GetByIdAsyncUntracked(id);
         if (courses == null) return NotFound();
 
-        await _cr.Delete(Course);
+        await _cr.Delete(c);
         return NoContent();
     }
 }
