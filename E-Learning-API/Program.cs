@@ -22,10 +22,11 @@ builder.Services.AddSwaggerGen();
 WebApplication app = builder.Build();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-//if (args.Length == 1 && args[0].ToLower() == "seed")
-//{
-//    await FakeCourses.SetFakeCourses(app, 5);
-//}
+if (args.Length == 1 && args[0].ToLower() == "seed")
+{
+    await FakeTags.SetFakeTags(app, 6);
+    await FakeCourses.SetFakeCourses(app, 5);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

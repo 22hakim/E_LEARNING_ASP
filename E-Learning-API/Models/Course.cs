@@ -16,7 +16,7 @@ public class Course
     public DateTime CreatedAt { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-    public DateTime? LastUpdate { get; set; }
+    public DateTime? LastUpdate { get; set; } = null;
 
     public string? Content { get; set; }
 
