@@ -4,7 +4,7 @@ using E_Learning_API.Models.Enum;
 
 namespace E_Learning_API.Models;
 
-public class Course
+public record Course
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

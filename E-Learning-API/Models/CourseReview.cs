@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using E_Learning_API.Models.Enum;
 
-public class CourseReview
+public record CourseReview
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

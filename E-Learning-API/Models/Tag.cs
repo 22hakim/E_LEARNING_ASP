@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_Learning_API.Models;
 
-public class Tag
+public record Tag
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
