@@ -9,8 +9,9 @@ public record Course
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    
-    public string? Title { get; set; }
+
+    [Required]
+    public string Title { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public DateTime CreatedAt { get; set; }
@@ -18,7 +19,8 @@ public record Course
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime? LastUpdate { get; set; } = null;
 
-    public string? Content { get; set; }
+    [Required]
+    public string Content { get; set; }
 
     public Published Published { get; set; }
 
