@@ -2,6 +2,7 @@
 using E_Learning_API.Interfaces;
 using E_Learning_API.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 
 namespace E_Learning_API.Controllers;
@@ -19,12 +20,12 @@ public class CoursesController : Controller
 
     // GET: api/values
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<Course>>> Get()
+    public async Task<ActionResult> Get()
     {
         var courses = await _cr.GetAll();
-        return (courses is null) ? NotFound(): Ok(courses);
+        return (!courses.Any()) ? NoContent(): Ok(courses);
     }
 
     // GET api/values/5

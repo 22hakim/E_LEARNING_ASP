@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_Learning_API.Models;
 
-public class CourseUpdate
+public record CourseUpdate
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

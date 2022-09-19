@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_Learning_API.Models;
 
-public class Assignement
+public record Assignement
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

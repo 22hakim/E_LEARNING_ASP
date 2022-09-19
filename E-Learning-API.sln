@@ -5,6 +5,13 @@ VisualStudioVersion = 25.0.1703.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Learning-API", "E-Learning-API\E-Learning-API.csproj", "{A53FD1B7-D84B-4508-BB86-F61D92EC1FB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{0CBD5F34-9D43-449F-9D55-6CBE350E5E36}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Learning-API.Tests", "E-Learning-API.Tests\E-Learning-API.Tests.csproj", "{8DE3C1D1-B33B-47E7-8885-05F635194CD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{A53FD1B7-D84B-4508-BB86-F61D92EC1FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A53FD1B7-D84B-4508-BB86-F61D92EC1FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A53FD1B7-D84B-4508-BB86-F61D92EC1FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE3C1D1-B33B-47E7-8885-05F635194CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE3C1D1-B33B-47E7-8885-05F635194CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE3C1D1-B33B-47E7-8885-05F635194CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE3C1D1-B33B-47E7-8885-05F635194CD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
