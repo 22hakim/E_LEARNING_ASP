@@ -16,6 +16,7 @@ public class CourseControllerTest
         Fixture fixture = new();
         fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
         fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
         var courseMoq = new Mock<ICourseRepository>();
         var courseList = fixture.CreateMany<Course>(5).AsEnumerable();
         var courseController = new CoursesController(courseMoq.Object);
