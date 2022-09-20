@@ -49,9 +49,9 @@ public class CoursesController : Controller
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Course))]
-    public async Task<IActionResult> Edit(int id, Course c)
+    public async Task<IActionResult> Put(int id, Course c)
     {
         if (id != c.Id) return BadRequest();
 
