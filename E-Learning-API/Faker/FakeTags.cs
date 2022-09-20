@@ -9,7 +9,7 @@ namespace E_Learning_API.Faker;
 
 public class FakeTags
 {
-    public static async Task SetFakeTags(IApplicationBuilder appB, int n)
+    public static void SetFakeTags(IApplicationBuilder appB, int n)
     {
         using var serviceScope = appB.ApplicationServices.CreateScope();
         var context = serviceScope.ServiceProvider.GetService<ElearningDataContext>();
@@ -24,7 +24,7 @@ public class FakeTags
                 .ToList();
 
             context.AddRange(tags);
-            context.SaveChanges();
+            context.SaveChangesAsync();
 
         }
     }

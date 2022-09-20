@@ -25,7 +25,7 @@ public class TagControllerTest
         var obj = result as ObjectResult;
 
         // Assert
-        Assert.Equal(200, obj.StatusCode);
+        Assert.Equal(200, obj!.StatusCode);
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class TagControllerTest
         var obj = result as ObjectResult;
 
         // Assert
-        Assert.Equal(200, obj.StatusCode);
+        Assert.Equal(200, obj!.StatusCode);
     }
 
     [Fact]
@@ -79,7 +79,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(404, obj.StatusCode);
+        Assert.Equal(404, obj!.StatusCode);
     }
 
     [Fact]
@@ -98,7 +98,7 @@ public class TagControllerTest
         var obj = result as CreatedAtActionResult;
 
         // Assert
-        Assert.Equal(201, obj.StatusCode);
+        Assert.Equal(201, obj!.StatusCode);
     }
 
     [Fact]
@@ -120,7 +120,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -141,7 +141,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(400, obj.StatusCode);
+        Assert.Equal(400, obj!.StatusCode);
     }
 
     [Fact]
@@ -163,7 +163,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -186,7 +186,7 @@ public class TagControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(404, obj.StatusCode);
+        Assert.Equal(404, obj!.StatusCode);
     }
 
 }

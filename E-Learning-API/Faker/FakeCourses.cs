@@ -10,7 +10,7 @@ namespace E_Learning_API.Faker;
 public class FakeCourses
 {
 
-    public static async Task SetFakeCourses(IApplicationBuilder appB, int n)
+    public static void SetFakeCourses(IApplicationBuilder appB, int n)
     {
         using var serviceScope = appB.ApplicationServices.CreateScope();
         var context = serviceScope.ServiceProvider.GetService<ElearningDataContext>();

@@ -25,7 +25,7 @@ public class CourseControllerTest
         var obj = result as ObjectResult;
 
         // Assert
-        Assert.Equal(200, obj.StatusCode);
+        Assert.Equal(200, obj!.StatusCode);
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class CourseControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public class CourseControllerTest
         var obj = result as ObjectResult;
 
         // Assert
-        Assert.Equal(200, obj.StatusCode);
+        Assert.Equal(200, obj!.StatusCode);
     }
 
     [Fact]
@@ -70,15 +70,15 @@ public class CourseControllerTest
         const int TEST_ID = 1;
         var courseMoq = new Mock<ICourseRepository>();
         var courseController = new CoursesController(courseMoq.Object);
-        Course? noFindObject = null;
+        Course? noFindobject = null;
 
         // Act
-        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(noFindObject); 
+        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(noFindobject); 
         var result = await courseController.Get(TEST_ID);
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(404, obj.StatusCode);
+        Assert.Equal(404, obj!.StatusCode);
     }
 
     [Fact]
@@ -97,7 +97,7 @@ public class CourseControllerTest
         var obj = result as CreatedAtActionResult;
 
         // Assert
-        Assert.Equal(201, obj.StatusCode);
+        Assert.Equal(201, obj!.StatusCode);
     }
 
     [Fact]
@@ -119,7 +119,7 @@ public class CourseControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -140,7 +140,7 @@ public class CourseControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(400, obj.StatusCode);
+        Assert.Equal(400, obj!.StatusCode);
     }
 
     [Fact]
@@ -162,7 +162,7 @@ public class CourseControllerTest
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(204, obj.StatusCode);
+        Assert.Equal(204, obj!.StatusCode);
     }
 
     [Fact]
@@ -177,15 +177,15 @@ public class CourseControllerTest
         {
             Id = 1
         };
-        Course? noFindObject = null;
+        Course? noFindobject = null;
 
         // Act
-        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(noFindObject);
+        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(noFindobject);
         var result = await courseController.Delete(TEST_ID, fakecourse);
         var obj = result as StatusCodeResult;
 
         // Assert
-        Assert.Equal(404, obj.StatusCode);
+        Assert.Equal(404, obj!.StatusCode);
     }
 
 }
