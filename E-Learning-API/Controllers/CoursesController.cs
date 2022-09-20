@@ -41,7 +41,7 @@ public class CoursesController : Controller
     // POST api/values
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> Create(Course c)
+    public async Task<IActionResult> Post(Course c)
     {
         await _cr.Add(c);
         return CreatedAtAction(nameof(Get), new { id = c.Id }, c);

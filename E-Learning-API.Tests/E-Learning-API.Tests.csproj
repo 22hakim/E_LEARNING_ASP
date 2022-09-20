@@ -30,5 +30,15 @@
   <ItemGroup>
     <None Remove="Moq" />
     <None Remove="AutoFixture" />
+    <None Remove="Services\" />
+    <None Remove="System\" />
+    <None Remove="System\Controllers\" />
+    <None Remove="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="System\" />
+    <Folder Include="System\Controllers\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
