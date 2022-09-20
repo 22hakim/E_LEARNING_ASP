@@ -18,19 +18,22 @@ public class TagController : Controller
 
     // GET: api/values
     [HttpGet]
-    public async Task<IEnumerable<Tag>> Get()
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult> Get()
     {
-        return await _tr.GetAll();
+        var tags = await _tr.GetAll();
+        return (!tags.Any()) ? NoContent() : Ok(tags);
     }
 
     // GET api/values/5
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), ActionName("GetValue")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Tag))]
     public async Task<IActionResult> Get(int id)
     {
-        Tag? t = await _tr.GetByIdAsyncUntracked(id);
-        return null == t ? NotFound() : Ok(t); 
+        var t = await _tr.GetByIdAsyncUntracked(id);
+        return t is null ? NotFound() : Ok(t); 
     }
 
     // POST api/values
@@ -44,9 +47,9 @@ public class TagController : Controller
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent,Type = typeof(Tag))]
-    public async Task<IActionResult> Edit(int id, Tag tag)
+    public async Task<IActionResult> Put(int id, Tag tag)
     {
         if (id != tag.Id) return BadRequest();
 

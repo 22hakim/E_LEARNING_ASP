@@ -53,9 +53,9 @@ public class CourseControllerTest
         const int TEST_ID = 1;
         var courseMoq = new Mock<ICourseRepository>();
         var courseController = new CoursesController(courseMoq.Object);
-
+        var fakeCourse = new Course();
         // Act
-        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(new Course());
+        courseMoq.Setup(x => x.GetByIdAsyncUntracked(TEST_ID)).ReturnsAsync(fakeCourse);
         var result = await courseController.Get(TEST_ID);
         var obj = result as ObjectResult;
 
