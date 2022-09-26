@@ -3,10 +3,13 @@ using E_Learning_API.Interfaces;
 using E_Learning_API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace E_Learning_API.Controllers;
 
+
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 [ApiController]
 public class CoursesController : Controller

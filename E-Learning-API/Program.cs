@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using System.Security.Principal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,7 @@ builder.Services.AddScoped<IAssignementRepository, AssignementRepository>();
 builder.Services.AddDbContext<ElearningDataContext>(s => s.UseNpgsql(builder.Configuration.GetConnectionString("ElearningDB")));
 
 builder.Services.Configure<JWTAuthentication>(builder.Configuration.GetSection("JWTAuthentication"));
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -45,6 +48,13 @@ builder.Services.AddAuthentication(options =>
         
 });
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 3;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+});
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ElearningDataContext>();
 
