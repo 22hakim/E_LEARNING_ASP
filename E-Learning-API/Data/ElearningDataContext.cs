@@ -1,13 +1,14 @@
 ﻿using System;
 using E_Learning_API.Models;
 using E_Learning_API.Models.Enum;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
 namespace E_Learning_API.Data;
 
 
-public class ElearningDataContext : DbContext
+public class ElearningDataContext : IdentityDbContext
 {
     public DbSet<Course> Courses { get; set; }
 
@@ -32,6 +33,7 @@ public class ElearningDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.UseSerialColumns();
         modelBuilder.HasPostgresEnum<Published>();
         modelBuilder.HasPostgresEnum<CategoryMessage>();

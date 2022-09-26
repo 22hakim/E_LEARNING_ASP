@@ -3,6 +3,12 @@ using E_Learning_API.Faker;
 using E_Learning_API.Interfaces;
 using E_Learning_API.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using E_Learning_API.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +20,35 @@ builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IAssignementRepository, AssignementRepository>();
 builder.Services.AddDbContext<ElearningDataContext>(s => s.UseNpgsql(builder.Configuration.GetConnectionString("ElearningDB")));
 
+builder.Services.Configure<JWTAuthentication>(builder.Configuration.GetSection("JWTAuthentication"));
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme  = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(jwt =>   
+{
+    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JWTAuthentication:Secret").Value);
+
+    jwt.SaveToken = true;
+    jwt.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true, 
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false, 
+        ValidateAudience = false,
+        RequireExpirationTime = false,
+        ValidateLifetime = true,
+    };
+        
+});
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ElearningDataContext>();
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -36,6 +69,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
