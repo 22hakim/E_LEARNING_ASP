@@ -12,5 +12,7 @@ public record Tag
     [Required]
     public string Name { get; set; }
 
+    public IList<CourseTag> courseTags { get; set; }
+
 }
 

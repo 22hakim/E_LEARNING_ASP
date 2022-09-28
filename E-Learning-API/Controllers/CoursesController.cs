@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace E_Learning_API.Controllers;
 
 
-[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 [ApiController]
 public class CoursesController : Controller
@@ -44,6 +43,7 @@ public class CoursesController : Controller
     // POST api/values
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Post(Course c)
     {
         await _cr.Add(c);
@@ -51,9 +51,10 @@ public class CoursesController : Controller
     }
 
     // PUT api/values/5
-    [HttpPut("{id}")]
+    [HttpPut("{id}\\Add")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Course))]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Put(int id, Course c)
     {
         if (id != c.Id) return BadRequest();
@@ -62,10 +63,12 @@ public class CoursesController : Controller
         return NoContent();
     }
 
+
     // DELETE api/values/5
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Delete(int id, Course c)
     {
         Course? courses = await _cr.GetByIdAsyncUntracked(id);

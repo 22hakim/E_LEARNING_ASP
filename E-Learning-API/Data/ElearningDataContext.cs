@@ -22,6 +22,8 @@ public class ElearningDataContext : IdentityDbContext
 
     public DbSet<Tag> Tags { get; set; }
 
+    public DbSet<CourseTag> CourseTags { get; set; }
+
     public ElearningDataContext(DbContextOptions<ElearningDataContext> options) : base(options)
     {
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Published>();
@@ -40,6 +42,7 @@ public class ElearningDataContext : IdentityDbContext
         modelBuilder.HasPostgresEnum<LevelCourse>();
         modelBuilder.HasPostgresEnum<RateCourse>();
         modelBuilder.HasPostgresEnum<StateCourse>();
+        modelBuilder.Entity<CourseTag>().HasKey(sc => new { sc.CourseId, sc.TagId });
     }
 
 }

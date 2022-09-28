@@ -26,7 +26,7 @@ public record Course
 
     public LevelCourse Level { get; set; }
 
-    public ICollection<Tag>? Tags { get; set; }
+    public IList<CourseTag> courseTags { get; set; }
 
     public Assignement? Assignement { get; set; }
 

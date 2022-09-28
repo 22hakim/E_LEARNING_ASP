@@ -1,5 +1,7 @@
 ﻿using E_Learning_API.Interfaces;
 using E_Learning_API.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -39,6 +41,7 @@ public class TagController : Controller
     // POST api/values
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Post(Tag tag)
     {
         await _tr.Add(tag);
@@ -49,6 +52,7 @@ public class TagController : Controller
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent,Type = typeof(Tag))]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Put(int id, Tag tag)
     {
         if (id != tag.Id) return BadRequest();
@@ -62,6 +66,7 @@ public class TagController : Controller
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Delete(int id)
     {
         Tag? t = await _tr.GetByIdAsyncUntracked(id);

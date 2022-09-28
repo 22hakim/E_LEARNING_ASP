@@ -32,11 +32,20 @@ public class CoursesRepository : ICourseRepository
         return Save();
     }
 
-    public async Task<IEnumerable<Course>> GetAll() => await _db.Courses.ToListAsync();
+    public async Task<IEnumerable<Course>> GetAll()
+    {
+        return await _db.Courses.ToListAsync();
+    }
 
-    public async Task<Course?> GetByIdAsync(int id) => await _db.Courses.FirstOrDefaultAsync(i => i.Id == id);
+    public async Task<Course?> GetByIdAsync(int id)
+    {
+        return await _db.Courses.FirstOrDefaultAsync(i => i.Id == id);
+    }
 
-    public async Task<Course?> GetByIdAsyncUntracked(int id) => await _db.Courses.AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+    public async Task<Course?> GetByIdAsyncUntracked(int id)
+    {
+        return await _db.Courses.AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+    }
 
     public async Task<bool> Save()
     {
